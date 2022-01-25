@@ -1,6 +1,6 @@
 /* Global Variables */
-let apiKey = '4aa51535e7dd703bcb096c9716a30451&units=imperial';
-let baseUrl = `https://api.openweathermap.org/data/2.5/weather?zip=`
+const apiKey = '4aa51535e7dd703bcb096c9716a30451&units=imperial';
+const baseUrl = `https://api.openweathermap.org/data/2.5/weather?zip=`
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (d.getMonth() + 1) +'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -9,6 +9,8 @@ document.getElementById('generate').addEventListener('click', getData);
 
 function getData(){
     const zipCode = document.getElementById('zip').value;
+    if(isNaN(zipCode))
+        alert('Please enter a valid zip code');
     const feelings = document.getElementById('feelings').value;
     getWeatherData(baseUrl, zipCode, apiKey)
     .then(function(data){
